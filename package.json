@@ -1,0 +1,39 @@
+{
+  "name": "camptracker",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@mapbox/mapbox-gl-draw": "1.5.0",
+    "@tmcw/togeojson": "6.0.0",
+    "@vercel/kv": "1.0.1",
+    "clsx": "2.1.1",
+    "cookie": "^1.0.2",
+    "mapbox-gl": "3.3.0",
+    "next": "14.2.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "swr": "2.2.0",
+    "zod": "3.23.8",
+    "zustand": "4.5.2"
+  },
+  "devDependencies": {
+    "@types/cookie": "^1.0.0",
+    "@types/mapbox-gl": "^3.4.1",
+    "@types/mapbox__mapbox-gl-draw": "^1.4.9",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
