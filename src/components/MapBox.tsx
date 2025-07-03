@@ -23,6 +23,8 @@ export default function MapBox({ geojson, checkin, onMap }: MapBoxProps) {
       zoom: 8,
     });
     onMap?.(mapRef.current);
+  }, [onMap]);
+=======
   }, []);
 
   useEffect(() => {
