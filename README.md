@@ -36,6 +36,7 @@ pnpm start  # run the production build
 pnpm lint   # run ESLint
 ```
 =======
+=======
 
 # Hetch Hetchy Trip‑Tracker
 
@@ -74,7 +75,10 @@ Set the following environment variables in Vercel or a local `.env` file:
 ## File Tree
 
 ```
+. 
+├─ pages
 .├─ pages
+
 │  ├─ _app.tsx      # global CSS import
 │  ├─ index.tsx     # public viewer
 │  └─ admin.tsx     # admin tools
@@ -113,6 +117,7 @@ GitHub OAuth, Postgres storage, daily digest emails and offline/PWA support.
 
 MIT
 =======
+=======
 ## Notes
 
 This is a quick prototype. TODOs include GitHub OAuth, Postgres storage, daily digest email, and offline/PWA support.
@@ -120,4 +125,3 @@ This is a quick prototype. TODOs include GitHub OAuth, Postgres storage, daily d
 ## Notes
 
 This is not production ready. TODOs include GitHub OAuth, Postgres storage, daily digest email, and offline/PWA support.
-
