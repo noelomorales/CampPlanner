@@ -3,7 +3,6 @@ import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
 import { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { gpx } from '@tmcw/togeojson';
-=======
 import { useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 
@@ -59,7 +58,7 @@ export default function DrawControls({ map, onChange }: Props) {
       />
     </div>
   );
-=======
+
   useEffect(() => {
     if (!map) return;
     const draw = new MapboxDraw({ displayControlsDefault: false, controls: { line_string: true, trash: true } });
