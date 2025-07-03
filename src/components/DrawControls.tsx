@@ -4,9 +4,12 @@ import { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { gpx } from '@tmcw/togeojson';
 
+
+=======
 =======
 import { useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
+
 
 
 interface Props {
@@ -64,6 +67,8 @@ export default function DrawControls({ map, onChange }: Props) {
 
 =======
 
+=======
+
   useEffect(() => {
     if (!map) return;
     const draw = new MapboxDraw({ displayControlsDefault: false, controls: { line_string: true, trash: true } });
@@ -75,4 +80,5 @@ export default function DrawControls({ map, onChange }: Props) {
     };
   }, [map, onChange]);
   return null;
+
 }

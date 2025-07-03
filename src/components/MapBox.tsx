@@ -25,8 +25,11 @@ export default function MapBox({ geojson, checkin, onMap }: MapBoxProps) {
     onMap?.(mapRef.current);
   }, [onMap]);
 
+
+=======
 =======
   }, []);
+
 
 
   useEffect(() => {
