@@ -14,27 +14,35 @@ export default function MapBox({ geojson, checkin, onMap }: MapBoxProps) {
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const divRef = useRef<HTMLDivElement>(null);
 
+  /* ───────────────────────────
+     Initialise map once
+  ─────────────────────────── */
   useEffect(() => {
     if (!divRef.current || mapRef.current) return;
+
     mapRef.current = new mapboxgl.Map({
       container: divRef.current,
       style: 'mapbox://styles/mapbox/outdoors-v12',
       center: [-119.5, 37.8],
       zoom: 8,
     });
+
     onMap?.(mapRef.current);
   }, [onMap]);
 
+  /* ───────────────────────────
+     Add / update route layer
+  ─────────────────────────── */
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !geojson) return;
+
     if (map.getSource('route')) {
-      (map.getSource('route') as mapboxgl.GeoJSONSource).setData(geojson as any);
+      (map.getSource('route') as mapboxgl.GeoJSONSource).setData(
+        geojson as any,
+      );
     } else {
-      map.addSource('route', {
-        type: 'geojson',
-        data: geojson as any,
-      });
+      map.addSource('route', { type: 'geojson', data: geojson as any });
       map.addLayer({
         id: 'route',
         type: 'line',
@@ -44,17 +52,31 @@ export default function MapBox({ geojson, checkin, onMap }: MapBoxProps) {
     }
   }, [geojson]);
 
+  /* ───────────────────────────
+     Add / update check-in marker
+  ─────────────────────────── */
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !checkin) return;
-    const id = 'checkin';
-    if (map.getSource(id)) {
-      (map.getSource(id) as mapboxgl.GeoJSONSource).setData({ type: 'Point', coordinates: [checkin.lon, checkin.lat] } as any);
+
+    const src = 'checkin';
+    const point: GeoJSON.Point = {
+      type: 'Point',
+      coordinates: [checkin.lon, checkin.lat],
+    };
+
+    if (map.getSource(src)) {
+      (map.getSource(src) as mapboxgl.GeoJSONSource).setData(point as any);
     } else {
-      map.addSource(id, { type: 'geojson', data: { type: 'Point', coordinates: [checkin.lon, checkin.lat] } as any });
-      map.addLayer({ id, type: 'circle', source: id, paint: { 'circle-radius': 6, 'circle-color': '#38f' } });
+      map.addSource(src, { type: 'geojson', data: point as any });
+      map.addLayer({
+        id: src,
+        type: 'circle',
+        source: src,
+        paint: { 'circle-radius': 6, 'circle-color': '#38f' },
+      });
     }
   }, [checkin]);
 
-  return <div ref={divRef} style={{ width: '100%', height: '400px' }} />;
+  return <div ref={divRef} style={{ width: '100%', height: 400 }} />;
 }
