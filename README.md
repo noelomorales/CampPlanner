@@ -9,6 +9,9 @@ pnpm install
 pnpm dev
 ```
 
+The repo includes a small `vercel.json` so Vercel runs `pnpm build` and serves
+the `.next` output directory when deploying.
+
 Set the following environment variables in Vercel or a local `.env` file:
 
 - `NEXT_PUBLIC_MAPBOX_TOKEN`
