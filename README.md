@@ -11,12 +11,14 @@ pnpm start   # run production build
 pnpm lint    # ESLint
 ```
 
-Set the following environment variables in Vercel or a local `.env`:
+Copy `.env.example` to `.env.local` and fill in these variables:
 
 | Name | Purpose |
 |------|---------|
-| `NEXT_PUBLIC_MAPBOX_TOKEN` | **Public** Mapbox token (`pk…`) |
+| `NEXT_PUBLIC_MAPBOX_TOKEN` | **Required.** Your Mapbox public token |
 | `ADMIN_PW` | Shared password for `/admin` |
+| `KV_REST_API_URL` | Vercel KV REST endpoint |
+| `KV_REST_API_TOKEN` | Vercel KV REST token |
 | `KV_NAMESPACE` | Optional prefix, defaults to `trailtales` |
 
 ## Vision

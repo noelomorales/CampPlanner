@@ -2,7 +2,10 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useEffect, useRef } from 'react';
 
-mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
+const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+if (token) {
+  mapboxgl.accessToken = token;
+}
 
 export interface MapBoxProps {
   geojson?: GeoJSON.FeatureCollection;
@@ -19,6 +22,10 @@ export default function MapBox({ geojson, checkin, onMap }: MapBoxProps) {
   ─────────────────────────── */
   useEffect(() => {
     if (!divRef.current || mapRef.current) return;
+    if (!token) {
+      console.error('NEXT_PUBLIC_MAPBOX_TOKEN not set');
+      return;
+    }
 
     mapRef.current = new mapboxgl.Map({
       container: divRef.current,
@@ -78,5 +85,12 @@ export default function MapBox({ geojson, checkin, onMap }: MapBoxProps) {
     }
   }, [checkin]);
 
+  if (!token) {
+    return (
+      <div style={{ width: '100%', height: 400, display: 'grid', placeItems: 'center', background: '#eee' }}>
+        <p>Set NEXT_PUBLIC_MAPBOX_TOKEN to view the map.</p>
+      </div>
+    );
+  }
   return <div ref={divRef} style={{ width: '100%', height: 400 }} />;
 }
