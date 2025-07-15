@@ -11,6 +11,7 @@ pnpm start   # run production build
 pnpm lint    # ESLint
 ```
 
+
 Copy `.env.example` to `.env.local` **before running `pnpm dev` or `pnpm build`** and fill in these variables. These values are baked into the client at build time:
 
 | Name | Purpose |
@@ -19,6 +20,13 @@ Copy `.env.example` to `.env.local` **before running `pnpm dev` or `pnpm build`*
 | `ADMIN_PW` | Shared password for `/admin` |
 | `KV_REST_API_URL` | Vercel KV REST endpoint |
 | `KV_REST_API_TOKEN` | Vercel KV REST token |
+
+Set the following environment variables in Vercel or a local `.env`:
+
+| Name | Purpose |
+|------|---------|
+| `NEXT_PUBLIC_MAPBOX_TOKEN` | **Public** Mapbox token (`pk…`) |
+| `ADMIN_PW` | Shared password for `/admin` |
 | `KV_NAMESPACE` | Optional prefix, defaults to `trailtales` |
 
 ## Vision
