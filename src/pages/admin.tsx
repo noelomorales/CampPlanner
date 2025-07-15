@@ -7,6 +7,7 @@ import MapBox from '@/components/MapBox';
 import DrawControls from '@/components/DrawControls';
 import AuthGate from '@/components/AuthGate';
 import SarForm, { SarData } from '@/components/SarForm';
+import copy from '../../copy/en.json';
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
@@ -61,7 +62,7 @@ export default function Admin() {
   return (
     <AuthGate>
       <main>
-        <h1>Admin</h1>
+        <h1>{copy.adminHeading}</h1>
 
         <MapBox
           geojson={route || undefined}

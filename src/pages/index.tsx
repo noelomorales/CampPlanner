@@ -1,6 +1,7 @@
 // TODO: Add GitHub OAuth, swap to Postgres, daily email digest and offline PWA
 import useSWR from 'swr';
 import MapBox from '@/components/MapBox';
+import copy from '../../copy/en.json';
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
@@ -14,7 +15,7 @@ export default function Home() {
 
   return (
     <main>
-      <h1>Trip Tracker</h1>
+      <h1>{copy.indexHeading}</h1>
       <MapBox geojson={route || undefined} checkin={checkin || undefined} />
     </main>
   );
